@@ -1,0 +1,66 @@
+body {
+  background-image: linear-gradient( -90deg, #f10d5e 0%, #ffb43e 25%, #43e03c 50%, #6528ff 100%);
+  animation: unicorn-slide 7s ease infinite;
+  -webkit-animation: unicorn-slide 7s ease infinite;
+  background-size: 200% 250%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+    @keyframes unicorn-slide {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+   }
+
+    @-webkit-keyframes unicorn-slide {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+   }
+
+#preset_tasks h1{
+    padding:25px 0 25px 0;
+    font-size:80px;
+    color:#fff;
+}
+#preset_tasks{
+    padding-top:150px;
+    padding-bottom:25px;
+}
+#preset_tasks div{
+    padding:5px 0 5px 0;
+  margin-right:30%;
+  text-align:right;
+}
+#preset_tasks div button{
+    margin-left:50px;
+}
+
+
+#new_task form{
+    padding-bottom:25px;
+}
+#new_task script{
+    padding:10px 0 10px 0;
+}
+
+ul {
+  list-style-type: none;
+  margin-right:30%;
+  text-align:right;
+}
+
+.btn-pad-left {
+  margin-left: 100px;
+  margin-bottom: 10px;
+}
+
+.task-item {
+		margin-bottom: 10px;
+	}
+
+button[disabled] {
+	background-color: gray;
+	color: white;
+}

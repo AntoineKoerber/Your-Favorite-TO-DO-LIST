@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/js/main.js">
+
+    <link href="static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+</head>
+<body>
+<marquee scrollamount="12" behavior="alternate" direction="left" direction="up">Welcome to Your Favorite To-Do List. I
+    hope you will enjoy your stay!
+</marquee>
+<section id="preset_tasks">
+    <h1 class="text-center">Your Favorite To-Do List</h1>
+    <div>
+        <!-- Check your mails -->
+        <h4>Check your mails
+            <button class="btn btn-outline-dark" onclick="window.open('https://mail.google.com', '_blank')">to mails
+            </button>
+        </h4>
+    </div>
+
+    <div>
+        <!-- Check the weather -->
+        <h4>Check the weather
+            <button class="btn btn-outline-dark"
+                    onclick="window.open('https://www.google.com/search?q=weather', '_blank')">weather
+            </button>
+        </h4>
+    </div>
+
+    <!-- Check the news -->
+    <div>
+        <h4>Check the news
+            <button class="btn btn-outline-dark"
+                    onclick="window.open('https://www.google.com/search?q=news', '_blank')">to news
+            </button>
+        </h4>
+    </div>
+</section>
+<section id="new_task">
+    <!-- To-Do List -->
+    <div class="entry_field text-center">
+        <form onsubmit="addTask(event)">
+            <label for="task">New task:</label>
+            <input type="text" id="task" name="task" size="40">
+            <button class="btn btn-outline-dark" type="submit">Add</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+    <script>
+	// Define a function to add new tasks
+	let nextRow = 1;
+	const addTask = event => {
+		event.preventDefault();
+
+		const taskInput = document.querySelector('#task');
+		const taskText = taskInput.value.trim();
+		taskInput.value = '';
+
+		if (taskText) {
+			// Create a new list item with the task text
+			const taskList = document.querySelector('#task-list');
+			const listItem = document.createElement('h4');
+			listItem.textContent = taskText;
+
+            // Add a CSS class to the list item
+			listItem.classList.add('task-item');
+
+			// Create a new button with the "done" text and assign it to a variable
+			const doneButton = document.createElement('button');
+			doneButton.textContent = 'done';
+			doneButton.classList.add('btn', 'btn-outline-dark', 'btn-pad-left'); // Add a class to the button
+
+			// Add a click event listener to strike through the list item text and disable the button
+			doneButton.addEventListener('click', () => {
+				listItem.style.textDecoration = 'line-through';
+				doneButton.textContent = 'delete';
+				doneButton.addEventListener('click', () => {
+			        doneButton.remove()
+			        listItem.remove()
+		        });
+			});
+
+			// Append the button to the list item and the list item to the task list
+			listItem.appendChild(doneButton);
+			taskList.appendChild(listItem);
+
+			nextRow += 1;
+		}
+	};
+
+    </script>
+</section>
+</body>
+</html>
