@@ -29,9 +29,8 @@ body {
     padding-bottom:25px;
 }
 #preset_tasks div{
-    padding:5px 0 5px 0;
-  margin-right:30%;
-  text-align:right;
+  padding:5px 0 5px 0;
+  text-align:center;
 }
 #preset_tasks div button{
     margin-left:50px;
