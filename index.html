@@ -1,105 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>To-Do List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
-    <link rel="stylesheet" href="static/js/main.js">
-
-    <link href="static/vendor/aos/aos.css" rel="stylesheet">
-    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Favorite To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7gy/lpuj7ILNBCVzCUHq+eXmZ9xCuHKzr+g" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-<marquee scrollamount="12" behavior="alternate" direction="left" direction="up">Welcome to Your Favorite To-Do List. I
-    hope you will enjoy your stay!
-</marquee>
-<section id="preset_tasks">
-    <h1 class="text-center">Your Favorite To-Do List</h1>
-    <div>
-        <!-- Check your mails -->
-        <h4>Check your mails
-            <button class="btn btn-outline-dark" onclick="window.open('https://mail.google.com', '_blank')">to mails
-            </button>
-        </h4>
+    <div class="container py-4">
+        <header class="text-center mb-4">
+            <h1 class="display-5 fw-bold">Your Favorite To-Do List</h1>
+            <p class="text-muted">Organize your day efficiently</p>
+        </header>
+
+        <!-- Quick Links Section -->
+        <section id="quick-links" class="mb-4">
+            <div class="row g-3 justify-content-center">
+                <div class="col-auto">
+                    <a href="https://mail.google.com" target="_blank" rel="noopener" class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                        </svg>
+                        Check Mail
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <a href="https://weather.com" target="_blank" rel="noopener" class="btn btn-outline-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-sun me-2" viewBox="0 0 16 16">
+                            <path d="M7 8a3.5 3.5 0 0 1 3.5 3.555.5.5 0 0 0 .624.492A1.503 1.503 0 0 1 13 13.5a1.5 1.5 0 0 1-1.5 1.5H3a2 2 0 1 1 .1-3.999A5.002 5.002 0 0 1 7 8"/>
+                            <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.734 3.374a2 2 0 1 1 3.296 2.198c.199.281.372.584.514.905a3 3 0 1 0-4.505-3.89 4.996 4.996 0 0 1 .695.787zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm14 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5z"/>
+                        </svg>
+                        Weather
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <a href="https://news.google.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper me-2" viewBox="0 0 16 16">
+                            <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+                            <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+                        </svg>
+                        News
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task Input Section -->
+        <section id="task-input" class="mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form id="task-form" class="d-flex gap-2">
+                        <input type="text"
+                               id="task-input-field"
+                               class="form-control"
+                               placeholder="What needs to be done?"
+                               autocomplete="off"
+                               required>
+                        <button type="submit" class="btn btn-primary">
+                            Add Task
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task List Section -->
+        <section id="task-list-section">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Tasks</h5>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-outline-secondary filter-btn active" data-filter="all">All</button>
+                        <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="active">Active</button>
+                        <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+                <ul id="task-list" class="list-group list-group-flush">
+                    <!-- Tasks will be rendered here -->
+                </ul>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <span id="task-count" class="text-muted">0 tasks remaining</span>
+                    <button id="clear-completed" class="btn btn-sm btn-outline-danger">
+                        Clear Completed
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="text-center py-5 d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check2-circle text-muted mb-3" viewBox="0 0 16 16">
+                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+            </svg>
+            <h5 class="text-muted">No tasks yet</h5>
+            <p class="text-muted">Add a task above to get started</p>
+        </div>
     </div>
 
-    <div>
-        <!-- Check the weather -->
-        <h4>Check the weather
-            <button class="btn btn-outline-dark"
-                    onclick="window.open('https://www.google.com/search?q=weather', '_blank')">weather
-            </button>
-        </h4>
-    </div>
-
-    <!-- Check the news -->
-    <div>
-        <h4>Check the news
-            <button class="btn btn-outline-dark"
-                    onclick="window.open('https://www.google.com/search?q=news', '_blank')">to news
-            </button>
-        </h4>
-    </div>
-</section>
-<section id="new_task">
-    <!-- To-Do List -->
-    <div class="entry_field text-center">
-        <form onsubmit="addTask(event)">
-            <label for="task">New task:</label>
-            <input type="text" id="task" name="task" size="40">
-            <button class="btn btn-outline-dark" type="submit">Add</button>
-        </form>
-        <ul id="task-list"></ul>
-    </div>
-    <script>
-	// Define a function to add new tasks
-	let nextRow = 1;
-	const addTask = event => {
-		event.preventDefault();
-
-		const taskInput = document.querySelector('#task');
-		const taskText = taskInput.value.trim();
-		taskInput.value = '';
-
-		if (taskText) {
-			// Create a new list item with the task text
-			const taskList = document.querySelector('#task-list');
-			const listItem = document.createElement('h4');
-			listItem.textContent = taskText;
-
-            // Add a CSS class to the list item
-			listItem.classList.add('task-item');
-
-			// Create a new button with the "done" text and assign it to a variable
-			const doneButton = document.createElement('button');
-			doneButton.textContent = 'done';
-			doneButton.classList.add('btn', 'btn-outline-dark', 'btn-pad-left'); // Add a class to the button
-
-			// Add a click event listener to strike through the list item text and disable the button
-			doneButton.addEventListener('click', () => {
-				listItem.style.textDecoration = 'line-through';
-				doneButton.textContent = 'delete';
-				doneButton.addEventListener('click', () => {
-			        doneButton.remove()
-			        listItem.remove()
-		        });
-			});
-
-			// Append the button to the list item and the list item to the task list
-			listItem.appendChild(doneButton);
-			taskList.appendChild(listItem);
-
-			nextRow += 1;
-		}
-	};
-
-    </script>
-</section>
+    <script src="static/js/main.js"></script>
 </body>
 </html>

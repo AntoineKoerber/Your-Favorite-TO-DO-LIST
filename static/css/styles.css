@@ -1,64 +1,466 @@
+/**
+ * Your Favorite To-Do List - Styles
+ *
+ * Features:
+ * - CSS Custom Properties for theming
+ * - Smooth animations and transitions
+ * - Responsive design
+ * - Accessibility considerations
+ */
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================ */
+:root {
+  /* Colors */
+  --color-primary: #0d6efd;
+  --color-primary-hover: #0b5ed7;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-danger-hover: #bb2d3b;
+
+  /* Backgrounds */
+  --bg-body: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-card: #ffffff;
+  --bg-card-header: #f8f9fa;
+
+  /* Text */
+  --text-primary: #212529;
+  --text-muted: #6c757d;
+  --text-completed: #adb5bd;
+
+  /* Shadows */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-image: linear-gradient( -90deg, #f10d5e 0%, #ffb43e 25%, #43e03c 50%, #6528ff 100%);
-  animation: unicorn-slide 7s ease infinite;
-  -webkit-animation: unicorn-slide 7s ease infinite;
-  background-size: 200% 250%;
+  min-height: 100vh;
+  background: var(--bg-body);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-primary);
+  padding: 1rem;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1.display-5 {
+  color: var(--bg-card);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   Card Components
+   ============================================ */
+.card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-    @keyframes unicorn-slide {
-      0% { background-position: 0% 50% }
-      50% { background-position: 100% 50% }
-      100% { background-position: 0% 50% }
-   }
-
-    @-webkit-keyframes unicorn-slide {
-      0% { background-position: 0% 50% }
-      50% { background-position: 100% 50% }
-      100% { background-position: 0% 50% }
-   }
-
-#preset_tasks h1{
-    padding:25px 0 25px 0;
-    font-size:80px;
-    color:#fff;
-}
-#preset_tasks{
-    padding-top:150px;
-    padding-bottom:25px;
-}
-#preset_tasks div{
-  padding:5px 0 5px 0;
-  text-align:center;
-}
-#preset_tasks div button{
-    margin-left:50px;
+  transition: box-shadow var(--transition-normal);
 }
 
-
-#new_task form{
-    padding-bottom:25px;
-}
-#new_task script{
-    padding:10px 0 10px 0;
+.card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
-ul {
-  list-style-type: none;
-  text-align:center;
+.card-header {
+  background-color: var(--bg-card-header);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.btn-pad-left {
-  margin-left: 100px;
-  margin-bottom: 10px;
+.card-footer {
+  background-color: var(--bg-card-header);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* ============================================
+   Quick Links Section
+   ============================================ */
+#quick-links .btn {
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+#quick-links .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+#quick-links .btn svg {
+  transition: transform var(--transition-fast);
+}
+
+#quick-links .btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   Task Input Section
+   ============================================ */
+#task-form .form-control {
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+#task-form .form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+#task-form .btn-primary {
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: background-color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+#task-form .btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+#task-form .btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Task List
+   ============================================ */
+#task-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+}
+
+#task-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+#task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+  background-color: var(--text-muted);
+  border-radius: 3px;
+}
+
+/* ============================================
+   Task Items
+   ============================================ */
 .task-item {
-		margin-bottom: 10px;
-	}
+  padding: 1rem 1.25rem;
+  border-left: 3px solid transparent;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              opacity var(--transition-normal),
+              transform var(--transition-normal);
+}
 
-button[disabled] {
-	background-color: gray;
-	color: white;
+.task-item:hover {
+  background-color: rgba(13, 110, 253, 0.04);
+  border-left-color: var(--color-primary);
+}
+
+.task-item.completed {
+  background-color: rgba(25, 135, 84, 0.04);
+  border-left-color: var(--color-success);
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--text-completed);
+}
+
+/* Task Checkbox */
+.task-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.task-checkbox:hover {
+  transform: scale(1.1);
+}
+
+.task-checkbox:checked {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+/* Task Text */
+.task-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  word-break: break-word;
+  transition: color var(--transition-normal),
+              text-decoration var(--transition-normal);
+}
+
+/* Delete Button */
+.delete-btn {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--transition-fast),
+              transform var(--transition-fast),
+              color var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+.task-item:hover .delete-btn,
+.task-item:focus-within .delete-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.delete-btn:hover {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: white;
+}
+
+/* ============================================
+   Task Animations
+   ============================================ */
+.task-enter {
+  animation: slideIn var(--transition-normal) ease-out;
+}
+
+.task-exit {
+  animation: slideOut var(--transition-normal) ease-in forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* ============================================
+   Filter Buttons
+   ============================================ */
+.filter-btn {
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.75rem;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* ============================================
+   Footer Actions
+   ============================================ */
+#task-count {
+  font-size: 0.875rem;
+}
+
+#clear-completed {
+  font-size: 0.8125rem;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+#clear-completed:hover {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+#empty-state {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+#empty-state svg {
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 576px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  h1.display-5 {
+    font-size: 1.75rem;
+  }
+
+  #task-form {
+    flex-direction: column;
+  }
+
+  #task-form .btn-primary {
+    width: 100%;
+  }
+
+  .filter-btn {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .task-item {
+    padding: 0.75rem 1rem;
+  }
+
+  .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+
+  .container {
+    max-width: 720px;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .task-item {
+    border: 1px solid currentColor;
+  }
+
+  .card {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  body {
+    background: white;
+  }
+
+  #quick-links,
+  #task-form,
+  .filter-btn,
+  #clear-completed,
+  .delete-btn {
+    display: none !important;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .task-item.completed .task-text {
+    color: #666;
+  }
 }
