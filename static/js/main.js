@@ -465,9 +465,10 @@ const TaskQuest = (() => {
     const escaped = escapeHtml(quest.text);
     const completedClass = quest.completed ? 'completed' : '';
     const checkedAttr = quest.completed ? 'checked' : '';
+    const difficultyClass = quest.xp === 50 ? 'diff-hard' : quest.xp === 25 ? 'diff-medium' : 'diff-easy';
 
     return `
-      <li class="quest-item ${completedClass}" data-id="${quest.id}">
+      <li class="quest-item ${completedClass} ${difficultyClass}" data-id="${quest.id}">
         <input type="checkbox"
                class="quest-checkbox"
                ${checkedAttr}
