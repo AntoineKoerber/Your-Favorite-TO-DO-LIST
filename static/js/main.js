@@ -32,7 +32,6 @@ const TaskManager = (() => {
     clearCompleted: null,
     filterButtons: null,
     emptyState: null,
-    taskListSection: null,
   };
 
   /**
@@ -105,22 +104,20 @@ const TaskManager = (() => {
     const checkedAttr = task.completed ? 'checked' : '';
 
     return `
-      <li class="list-group-item task-item ${completedClass}" data-id="${task.id}">
-        <div class="d-flex align-items-center gap-3">
-          <input type="checkbox"
-                 class="form-check-input task-checkbox"
-                 ${checkedAttr}
-                 aria-label="Mark task as ${task.completed ? 'incomplete' : 'complete'}">
-          <span class="task-text flex-grow-1">${escapedText}</span>
-          <button type="button"
-                  class="btn btn-sm btn-outline-danger delete-btn"
-                  aria-label="Delete task">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-          </button>
-        </div>
+      <li class="task-item ${completedClass}" data-id="${task.id}">
+        <input type="checkbox"
+               class="task-checkbox"
+               ${checkedAttr}
+               aria-label="Mark task as ${task.completed ? 'incomplete' : 'complete'}">
+        <span class="task-text">${escapedText}</span>
+        <button type="button"
+                class="delete-btn"
+                aria-label="Delete task">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+          </svg>
+        </button>
       </li>
     `;
   };
@@ -139,10 +136,10 @@ const TaskManager = (() => {
     const taskText = activeCount === 1 ? 'task' : 'tasks';
     elements.taskCount.textContent = `${activeCount} ${taskText} remaining`;
 
-    // Toggle empty state
+    // Toggle empty state and task list visibility
     const hasVisibleTasks = filteredTasks.length > 0;
     elements.emptyState.classList.toggle('d-none', hasVisibleTasks);
-    elements.taskListSection.classList.toggle('d-none', !hasVisibleTasks && tasks.length === 0);
+    elements.taskList.classList.toggle('d-none', !hasVisibleTasks);
 
     // Update clear completed button visibility
     const hasCompleted = tasks.some((task) => task.completed);
@@ -293,7 +290,6 @@ const TaskManager = (() => {
     elements.clearCompleted = document.getElementById('clear-completed');
     elements.filterButtons = document.querySelectorAll('.filter-btn');
     elements.emptyState = document.getElementById('empty-state');
-    elements.taskListSection = document.getElementById('task-list-section');
   };
 
   /**
@@ -305,7 +301,7 @@ const TaskManager = (() => {
     elements.clearCompleted.addEventListener('click', clearCompleted);
 
     // Filter buttons - use event delegation
-    document.querySelector('.btn-group').addEventListener('click', handleFilterClick);
+    document.querySelector('.filter-group').addEventListener('click', handleFilterClick);
 
     // Keyboard shortcuts
     document.addEventListener('keydown', (event) => {
